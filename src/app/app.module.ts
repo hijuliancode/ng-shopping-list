@@ -8,6 +8,8 @@ import { HeaderComponent } from './components/header/header.component';
 import { ListItemsComponent } from './components/list-items/list-items.component';
 import { ItemComponent } from './components/item/item.component';
 import { TotalComponent } from './components/total/total.component';
+import { AddItemComponent } from './components/add-item/add-item.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -15,12 +17,14 @@ import { TotalComponent } from './components/total/total.component';
     HeaderComponent,
     ListItemsComponent,
     ItemComponent,
-    TotalComponent
+    TotalComponent,
+    AddItemComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
