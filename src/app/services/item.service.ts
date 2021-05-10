@@ -60,4 +60,8 @@ export class ItemService {
   addItem(item: Item):void {
     this.items.unshift(item)
   }
+
+  removeItem(item: Item):void {
+    this.items = this.items.filter((x) => x.id !== item.id);
+  }
 }

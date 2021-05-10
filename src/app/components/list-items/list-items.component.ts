@@ -17,14 +17,19 @@ export class ListItemsComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.items = this.itemService.getItems();
-
+    this.getItems()
     this.getTotal()
+  }
+
+  getItems():void {
+    this.items = this.itemService.getItems();
   }
 
   deleteItem(item: Item) {
     console.log('e=>', item)
-    this.items = this.items.filter((x) => x.id !== item.id);
+    // this.items = this.items.filter((x) => x.id !== item.id);
+    this.itemService.removeItem(item)
+    this.getItems()
     this.getTotal()
   }
 
