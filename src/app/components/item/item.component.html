@@ -1,1 +1,10 @@
-<p>item works!</p>
+<div class="row">
+  <div class="title">
+    <input type="checkbox" [checked]="item.completed">
+    {{ item.title }}
+  </div>
+  <div class="price">{{ item.price | currency}}</div>
+  <div class="quantity">{{ item.quantity }}</div>
+  <div class="total">{{ (item.price * item.quantity) | currency }}</div>
+  <div class="actions"><button>X</button></div>
+</div>
