@@ -3,7 +3,7 @@
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
-.container {
-  align-items: center;
-  display: flex;
+.main-container {
+  margin: 0 auto;
+  max-width: 800px;
 }
