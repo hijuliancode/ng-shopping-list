@@ -6,5 +6,7 @@
   <div class="price">{{ item.price | currency}}</div>
   <div class="quantity">{{ item.quantity }}</div>
   <div class="total">{{ (item.price * item.quantity) | currency }}</div>
-  <div class="actions"><button>X</button></div>
+  <div class="actions">
+    <button (click)="onDelete(item)">X</button>
+  </div>
 </div>

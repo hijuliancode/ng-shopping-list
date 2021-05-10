@@ -27,8 +27,40 @@ export class ListItemsComponent implements OnInit {
         price: 0.5,
         quantity: 8,
         completed: true,
-      }
+      },
+      {
+        id: 2,
+        title: 'Pera',
+        price: 2.5,
+        quantity: 6,
+        completed: false,
+      },
+      {
+        id: 3,
+        title: 'Platano',
+        price: 1.4,
+        quantity: 1,
+        completed: true,
+      },
+      {
+        id: 4,
+        title: 'Durazno',
+        price: 5.5,
+        quantity: 3,
+        completed: false,
+      },
+      {
+        id: 5,
+        title: 'Coco',
+        price: 10.5,
+        quantity: 10,
+        completed: false,
+      },
     ]
   }
 
+  deleteItem(item: Item) {
+    console.log('e=>', item)
+    this.items = this.items.filter((x) => x.id !== item.id);
+  }
 }
