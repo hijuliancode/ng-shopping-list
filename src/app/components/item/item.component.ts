@@ -10,6 +10,7 @@ export class ItemComponent implements OnInit {
 
   @Input() item: Item = new Item();
   @Output() deleteItem: EventEmitter<Item> = new EventEmitter();
+  @Output() toggleItem: EventEmitter<Item> = new EventEmitter();
 
   constructor() { }
 
@@ -22,6 +23,7 @@ export class ItemComponent implements OnInit {
 
   onToggle(item: Item):void {
     this.item.completed = !item.completed;
+    this.toggleItem.emit(item);
   }
 
 }
