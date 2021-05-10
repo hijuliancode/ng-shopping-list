@@ -34,8 +34,12 @@ export class AddItemComponent implements OnInit {
 
     console.log('=> item', newItem)
 
-    this.itemService.addItem(newItem)
-    this.router.navigate(['/'])
+    // this.itemService.addItem(newItem)
+
+    this.itemService.addItem(newItem).subscribe(i => {
+      this.router.navigate(['/'])
+    });
+
   }
 
 }

@@ -30,22 +30,26 @@
 .price {
   width: 15%;
   padding: 0 4px;
+  text-align: right;
 }
 .quantity {
   width: 10%;
   padding: 0 4px;
+  text-align: center;
 }
 .total {
   width: 15%;
   font-weight: bolder;
   color: green;
   padding: 0 4px;
+  text-align: right;
 }
 .actions {
   width: 10%;
   text-align: center;
   box-sizing: border-box;
   padding: 0 4px;
+  text-align: center;
 
   button {
     background: crimson;

@@ -1,10 +1,19 @@
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Item } from '../models/Item';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ItemService {
+
+  url:string = 'http://localhost:3001/items'
+  httpOptions = {
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  }
 
   items: Item[] = [
     {
@@ -51,17 +60,25 @@ export class ItemService {
     },
   ];
 
-  constructor() { }
+  constructor(
+    private http:HttpClient,
+  ) { }
 
-  getItems():Item[] {
-    return this.items;
+  getItems():Observable<Item[]> {
+    // return this.items;
+    return this.http.get<Item[]>(this.url);
   }
 
-  addItem(item: Item):void {
-    this.items.unshift(item)
+  addItem(item: Item):Observable<Item> {
+    // this.items.unshift(item)
+    return this.http.post<Item>(this.url, item, this.httpOptions);
   }
 
-  removeItem(item: Item):void {
-    this.items = this.items.filter((x) => x.id !== item.id);
+  removeItem(item: Item):Observable<Item[]> {
+    return this.http.delete<Item[]>(`${this.url}/${item.id}`);
+  }
+
+  toggleItem(item: Item):Observable<Item> {
+    return this.http.put<Item>(`${this.url}/${item.id}`, item, this.httpOptions);
   }
 }

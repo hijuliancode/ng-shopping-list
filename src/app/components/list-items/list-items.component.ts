@@ -18,22 +18,26 @@ export class ListItemsComponent implements OnInit {
 
   ngOnInit(): void {
     this.getItems()
-    this.getTotal()
   }
 
   getItems():void {
-    this.items = this.itemService.getItems();
+    // this.items = this.itemService.getItems();
+    this.itemService.getItems().subscribe(data => {
+      this.items = data;
+      this.getTotal()
+    })
   }
 
   deleteItem(item: Item) {
-    console.log('e=>', item)
     // this.items = this.items.filter((x) => x.id !== item.id);
-    this.itemService.removeItem(item)
-    this.getItems()
-    this.getTotal()
+    this.itemService.removeItem(item).subscribe(data => {
+      this.items = data;
+      this.getTotal();
+    });
   }
 
   toggleItem(item: Item):void {
+    this.itemService.toggleItem(item).subscribe()
     this.getTotal()
   }
 
