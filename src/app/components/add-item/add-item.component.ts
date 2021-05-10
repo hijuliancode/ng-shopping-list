@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Item } from '../../models/Item';
+import { ItemService } from '../../services/item.service';
 
 @Component({
   selector: 'app-add-item',
@@ -13,29 +15,27 @@ export class AddItemComponent implements OnInit {
   price: number = 0;
   quantity: number = 0;
 
-  constructor() { }
+  constructor(
+    private itemService: ItemService,
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
   }
 
   onSubmit() {
-    let item = new Item()
+    let newItem = new Item()
 
-    item.id = this.id;
-    item.title = this.title;
-    item.price = this.price;
-    item.quantity = this.quantity;
-    item.completed = false;
+    newItem.id = this.id;
+    newItem.title = this.title;
+    newItem.price = this.price;
+    newItem.quantity = this.quantity;
+    newItem.completed = false;
 
-    console.log('=> item', item)
+    console.log('=> item', newItem)
 
-    console.log('reset =>');
-    
-    this.id = 0;
-    this.title = '';
-    this.price = 0;
-    this.quantity = 0;
-
+    this.itemService.addItem(newItem)
+    this.router.navigate(['/'])
   }
 
 }
